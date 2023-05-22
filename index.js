@@ -1,7 +1,6 @@
 const app = document.getElementById('app')
 app.classList.add('app')
 
-
 const containerGeneral = document.createElement('main')
 containerGeneral.classList.add('container-general')
 app.appendChild(containerGeneral)
@@ -23,6 +22,7 @@ containerScreen.classList.add("screen")
 const input = document.createElement('input')
 //input.setAttribute('id', 'screen')
 input.classList.add("input-screen")
+input.readOnly=true
 containerScreen.appendChild(input)
 
 const del = document.createElement('button')
