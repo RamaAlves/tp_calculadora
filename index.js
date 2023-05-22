@@ -97,18 +97,22 @@ function reset(){
     input.value = ''
 }
 function resolve(){
-    try {
-        let exp = input.value
-        let result = eval(exp)
-        if (result==undefined){
-            input.value= 'Error en la operacion'
-        }else{
-            addHistory(exp,result)
-            input.value= result
+    let exp = input.value
+    if (exp[0]!='0'||(exp[0]+exp[1])=='0.'){
+        try {
+            let result = eval(exp)
+            if (result==undefined){
+                input.value= 'Error en la operacion'
+            }else{
+                addHistory(exp,result)
+                input.value= result
+            }
         }
-    }
-    catch{
-        input.value= 'Error en la operacion'
+        catch{
+            input.value= 'Error en la operacion'
+        }
+    }else{
+        input.value= 'Error en la operacion'    
     }
 }
 function deleteLastElement(){
