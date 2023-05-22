@@ -1,9 +1,18 @@
 const app = document.getElementById('app')
 app.classList.add('app')
 
+
+const containerGeneral = document.createElement('main')
+containerGeneral.classList.add('container-general')
+app.appendChild(containerGeneral)
+
+const containerCalculadora = document.createElement('div')
+containerCalculadora.classList.add('container-calculadora')
+containerGeneral.appendChild(containerCalculadora)
+
 const history = document.createElement('div')
 history.classList.add('history')
-app.appendChild(history)
+containerCalculadora.appendChild(history)
 
 const calculadora = document.createElement('div')
 calculadora.classList.add("calculadora")
@@ -42,11 +51,11 @@ const span = document.createElement('span')
 span.classList.add('slider', 'round')
 swichDarkMode.appendChild(span)
 containerSwich.appendChild(swichDarkMode)
+containerGeneral.insertBefore(containerSwich, containerCalculadora)
 
-calculadora.appendChild(containerSwich)
 calculadora.appendChild(containerScreen)
 calculadora.appendChild(containerKeyboard)
-app.insertBefore(calculadora, history)
+containerCalculadora.insertBefore(calculadora, history)
 
 function addKeys(){
     
@@ -83,16 +92,24 @@ addKeys()
 
 function addValue(e){
     input.value += e.target.textContent
-    console.log(input.value)
 }
 function reset(){
     input.value = ''
 }
 function resolve(){
-    let exp = input.value
-    let result = eval(exp)
-    addHistory(exp,result)
-    input.value= result
+    try {
+        let exp = input.value
+        let result = eval(exp)
+        if (result==undefined){
+            input.value= 'Error en la operacion'
+        }else{
+            addHistory(exp,result)
+            input.value= result
+        }
+    }
+    catch{
+        input.value= 'Error en la operacion'
+    }
 }
 function deleteLastElement(){
     newInput=input.value.slice(0,-1)
@@ -102,10 +119,10 @@ function deleteLastElement(){
 function addHistory(expression,result){
     let calc = document.createElement('p')
     calc.classList.add('calculo')
-    calc.textContent = expression
+    calc.textContent = expression + ' ='
     let res = document.createElement('p')
     res.classList.add('resultado')
-    res.textContent = '= '+result
+    res.textContent = result
     history.appendChild(calc)
     history.appendChild(res)
 }

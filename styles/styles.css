@@ -12,51 +12,18 @@
   align-items: center;
   justify-content: center;
   gap: 2rem;
+  flex-direction: column;
 }
-.app .history {
-  min-width: 200px;
-  max-width: 30%;
-  height: 60vh;
-  border-radius: 0.35rem;
-  border: #dadada 1px solid;
-  scroll-behavior: auto;
-  overflow: auto;
-  padding: 2rem;
-  color: #e8e8e8;
-  font-size: 1.3rem;
-}
-.app .history::-webkit-scrollbar {
-  width: 0.5rem; /* width of the entire scrollbar */
-  height: 0.5rem; /* width of the entire scrollbar */
-}
-.app .history::-webkit-scrollbar-track {
-  background: transparent; /* color of the tracking area */
-}
-.app .history::-webkit-scrollbar-thumb {
-  background-color: #e8e8e8; /* color of the scroll thumb */
-  border-radius: 20px; /* roundness of the scroll thumb */
-  border: 3px solid #1f3041; /* creates padding around scroll thumb */
-}
-.app .history .calculo {
-  border-bottom: #4c5279 0.5px solid;
-}
-.app .history .resultado {
-  padding-top: 0.5rem;
-  padding-bottom: 1rem;
-  opacity: 0.5;
-  text-align: end;
-}
-.app .calculadora {
-  height: 60vh;
+.app .container-general {
   display: flex;
   flex-direction: column;
-  align-items: stretch;
-  gap: 1rem;
-  padding: 0.75rem;
+  gap: 24px;
+  padding: 2rem;
   border-radius: 0.35rem;
   border: #dadada 1px solid;
+  background-color: #121424;
 }
-.app .calculadora .container-swich {
+.app .container-general .container-swich {
   align-self: flex-end;
   flex-grow: 1;
   display: flex;
@@ -64,32 +31,32 @@
   align-items: center;
   gap: 0.5rem;
 }
-.app .calculadora .container-swich .img-theme {
+.app .container-general .container-swich .img-theme {
   width: 25px;
   filter: invert(100%);
 }
-.app .calculadora .container-swich .swich {
+.app .container-general .container-swich .swich {
   position: relative;
   display: inline-block;
   line-height: 1.4;
-  width: 60px;
-  height: 100%;
+  width: 56px;
+  height: 28px;
 }
-.app .calculadora .container-swich .swich input {
+.app .container-general .container-swich .swich input {
   opacity: 0;
   width: 0;
   height: 0;
 }
-.app .calculadora .container-swich .swich input:checked + .slider {
+.app .container-general .container-swich .swich input:checked + .slider {
   background-color: #1f3041;
 }
-.app .calculadora .container-swich .swich input:focus + .slider {
+.app .container-general .container-swich .swich input:focus + .slider {
   box-shadow: 0 0 1px #1f3041;
 }
-.app .calculadora .container-swich .swich input:checked + .slider:before {
+.app .container-general .container-swich .swich input:checked + .slider:before {
   transform: translateX(26px);
 }
-.app .calculadora .container-swich .swich .slider {
+.app .container-general .container-swich .swich .slider {
   position: absolute;
   cursor: pointer;
   top: 0;
@@ -99,36 +66,86 @@
   background-color: #2060a0;
   transition: 0.4s;
 }
-.app .calculadora .container-swich .swich .slider::before {
+.app .container-general .container-swich .swich .slider::before {
   position: absolute;
   content: "";
-  height: 26px;
-  width: 26px;
+  height: 20px;
+  width: 20px;
   left: 4px;
   bottom: 4px;
   background-color: #1f3041;
   transition: 0.4s;
 }
-.app .calculadora .container-swich .swich .round {
+.app .container-general .container-swich .swich .round {
   border-radius: 34px;
 }
-.app .calculadora .container-swich .swich .round::before {
+.app .container-general .container-swich .swich .round::before {
   border-radius: 50%;
 }
-.app .calculadora .screen {
+.app .container-general .container-calculadora {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+}
+.app .container-general .container-calculadora .history {
+  width: 40vw;
+  height: 60vh;
+  border-radius: 0.35rem;
+  border: #dadada 1px solid;
+  scroll-behavior: auto;
+  overflow: auto;
+  padding: 2rem;
+  color: #e8e8e8;
+  background-color: #161929;
+  font-size: 1.3rem;
+}
+.app .container-general .container-calculadora .history::-webkit-scrollbar {
+  width: 0.5rem; /* width of the entire scrollbar */
+  height: 0.5rem; /* width of the entire scrollbar */
+}
+.app .container-general .container-calculadora .history::-webkit-scrollbar-track {
+  background: transparent; /* color of the tracking area */
+}
+.app .container-general .container-calculadora .history::-webkit-scrollbar-thumb {
+  background-color: #e8e8e8; /* color of the scroll thumb */
+  border-radius: 20px; /* roundness of the scroll thumb */
+  border: 3px solid #1f3041; /* creates padding around scroll thumb */
+}
+.app .container-general .container-calculadora .history .calculo {
+  border-bottom: #4c5279 0.5px solid;
+}
+.app .container-general .container-calculadora .history .resultado {
+  padding-top: 0.5rem;
+  padding-bottom: 1rem;
+  opacity: 0.5;
+  text-align: end;
+}
+.app .container-general .container-calculadora .calculadora {
+  height: 60vh;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 1rem;
+  padding: 0.75rem;
+  border-radius: 0.35rem;
+  border: #dadada 1px solid;
+  background-color: #161929;
+}
+.app .container-general .container-calculadora .calculadora .screen {
   flex-grow: 2;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   border: none;
 }
-.app .calculadora .screen .input-screen {
+.app .container-general .container-calculadora .calculadora .screen .input-screen {
   grid-column: 1/4;
   padding-left: 1rem;
   font-size: 1rem;
   line-height: 2;
   border: none;
 }
-.app .calculadora .screen .delete {
+.app .container-general .container-calculadora .calculadora .screen .delete {
   grid-column: 4/5;
   cursor: pointer;
   border: none;
@@ -137,16 +154,16 @@
   background-color: #1f3041;
   transition: background-color 0.2s ease-in;
 }
-.app .calculadora .screen .delete:hover {
+.app .container-general .container-calculadora .calculadora .screen .delete:hover {
   background-color: #121c26;
 }
-.app .calculadora .keyboard {
+.app .container-general .container-calculadora .calculadora .keyboard {
   display: grid;
   flex-grow: 10;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   gap: 0.375rem;
 }
-.app .calculadora .keyboard .btn {
+.app .container-general .container-calculadora .calculadora .keyboard .btn {
   font-size: 1.5rem;
   border-radius: 50%;
   color: #131521;
@@ -154,100 +171,113 @@
   cursor: pointer;
   transition: background-color 0.2s ease-in;
 }
-.app .calculadora .keyboard .btn:nth-child(16) {
+.app .container-general .container-calculadora .calculadora .keyboard .btn:nth-child(16) {
   grid-column: 4/5;
   grid-row: 4/6;
   border-radius: 1.75rem;
 }
-.app .calculadora .keyboard .btn:hover {
+.app .container-general .container-calculadora .calculadora .keyboard .btn:hover {
   background-color: #b6b6b6;
 }
-.app .calculadora .keyboard .equal {
+.app .container-general .container-calculadora .calculadora .keyboard .equal {
   background-color: #f1631d;
 }
-.app .calculadora .keyboard .equal:hover {
+.app .container-general .container-calculadora .calculadora .keyboard .equal:hover {
   background-color: #c35118;
 }
-.app .calculadora .keyboard .op {
+.app .container-general .container-calculadora .calculadora .keyboard .op {
   background-color: #2060a0;
 }
-.app .calculadora .keyboard .op:hover {
+.app .container-general .container-calculadora .calculadora .keyboard .op:hover {
   background-color: #184d82;
 }
-.app .calculadora .keyboard .reset {
+.app .container-general .container-calculadora .calculadora .keyboard .reset {
   background-color: #dc1a1a;
 }
-.app .calculadora .keyboard .reset:hover {
+.app .container-general .container-calculadora .calculadora .keyboard .reset:hover {
   background-color: #b61414;
 }
 
 .light {
   background-color: #e8e8e8;
 }
-.light .history {
+.light .container-general {
+  border: #1d1e1e 1px solid;
+  background-color: #abc9e6;
+}
+.light .container-general .container-swich .img-theme {
+  filter: invert(0);
+}
+.light .container-general .container-swich .swich input:checked + .slider {
+  background-color: #2060a0;
+}
+.light .container-general .container-swich .swich input:focus + .slider {
+  box-shadow: 0 0 1px #2060a0;
+}
+.light .container-general .container-swich .swich .slider {
+  background-color: #121319;
+}
+.light .container-general .container-swich .swich .slider::before {
+  background-color: #e8e8e8;
+}
+.light .container-general .container-calculadora .history {
   border: #1d1e1e 1px solid;
   color: #121319;
   background-color: #cbddee;
 }
-.light .history::-webkit-scrollbar-thumb {
+.light .container-general .container-calculadora .history::-webkit-scrollbar-thumb {
   background-color: #121319; /* color of the scroll thumb */
   border: 3px solid #8cb8e4; /* creates padding around scroll thumb */
 }
-.light .history .calculo {
+.light .container-general .container-calculadora .history .calculo {
   border-bottom: #4c5279 0.5px solid;
 }
-.light .history .resultado {
+.light .container-general .container-calculadora .history .resultado {
   opacity: 0.8;
   color: #081987;
 }
-.light .calculadora {
+.light .container-general .container-calculadora .calculadora {
   border: #1d1e1e 1px solid;
   background-color: #cbddee;
 }
-.light .calculadora .container-swich .img-theme {
-  filter: invert(0);
-}
-.light .calculadora .container-swich .swich input:checked + .slider {
-  background-color: #2060a0;
-}
-.light .calculadora .container-swich .swich input:focus + .slider {
-  box-shadow: 0 0 1px #2060a0;
-}
-.light .calculadora .container-swich .swich .slider {
-  background-color: #121319;
-}
-.light .calculadora .container-swich .swich .slider::before {
-  background-color: #e8e8e8;
-}
-.light .calculadora .screen .delete {
+.light .container-general .container-calculadora .calculadora .screen .delete {
   color: #121319;
   background-color: #8cb8e4;
 }
-.light .calculadora .screen .delete:hover {
+.light .container-general .container-calculadora .calculadora .screen .delete:hover {
   background-color: #688fb6;
 }
-.light .calculadora .keyboard .btn {
+.light .container-general .container-calculadora .calculadora .keyboard .btn {
   color: #131521;
   background-color: #8cb8e4;
 }
-.light .calculadora .keyboard .btn:hover {
+.light .container-general .container-calculadora .calculadora .keyboard .btn:hover {
   background-color: #688fb6;
 }
-.light .calculadora .keyboard .equal {
+.light .container-general .container-calculadora .calculadora .keyboard .equal {
   background-color: #f1631d;
 }
-.light .calculadora .keyboard .equal:hover {
+.light .container-general .container-calculadora .calculadora .keyboard .equal:hover {
   background-color: #c35118;
 }
-.light .calculadora .keyboard .op {
+.light .container-general .container-calculadora .calculadora .keyboard .op {
   background-color: #2060a0;
 }
-.light .calculadora .keyboard .op:hover {
+.light .container-general .container-calculadora .calculadora .keyboard .op:hover {
   background-color: #184d82;
 }
-.light .calculadora .keyboard .reset {
+.light .container-general .container-calculadora .calculadora .keyboard .reset {
   background-color: #dc1a1a;
 }
-.light .calculadora .keyboard .reset:hover {
+.light .container-general .container-calculadora .calculadora .keyboard .reset:hover {
   background-color: #b61414;
+}
+
+@media (max-width: 768px) {
+  .app {
+    padding: 2rem 0;
+  }
+  .app .container-calculadora {
+    flex-direction: column;
+  }
 }/*# sourceMappingURL=styles.css.map */
