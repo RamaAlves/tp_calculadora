@@ -58,6 +58,7 @@ calculadora.appendChild(containerKeyboard)
 containerCalculadora.insertBefore(calculadora, history)
 
 const keys = ['AC','(',')','/','7','8','9','*','4','5','6','-','1','2','3','+','0','.','=']
+const ERROR_MESSAGE= 'Error en la operacion'
 
 function addKeys(){    
     
@@ -91,10 +92,12 @@ addKeys()
 //const screen = document.getElementById('screen') 
 
 function addValue(e){
+    refreshInput()
     input.value += e.target.textContent
 }
 function validityKeys(e){
     e.preventDefault();
+    refreshInput()
     if(e.key == 'Enter'){
         resolve()
     }else if(e.key== 'Backspace'){
@@ -106,42 +109,38 @@ function validityKeys(e){
         }
     }
 }
+function refreshInput(){
+    if (input.value==ERROR_MESSAGE){
+        input.value = ''
+    }
+}
 function reset(){
     input.value = ''
 }
 function resolve(){
     let exp = input.value
     if (exp[0]!='0'||(exp[0]+exp[1])=='0.'){
-        try {
-            let result = eval(exp)
-            if (result==undefined){
-                console.error(result)
-                input.value= 'Error en la operacion'
-            }else{
-                addHistory(exp,result)
-                input.value= result
-            }
-        }
-        catch{
-            console.error(result)
-            input.value= 'Error en la operacion'
-        }
+        tryResolve(exp)
     }else{
         let expSin0 = exp.slice(1)
-        try{
-            let result = eval(expSin0)
-            if (result==undefined){
-                console.error(result)
-                input.value= 'Error en la operacion'
-            }else{
-                addHistory(expSin0,result)
-                input.value= result
-            }
+        tryResolve(expSin0)
+    }
+}
+function tryResolve(exp){
+    try{
+        let result = eval(exp)
+        if (result==undefined){
+            console.error(result)
+            input.value= ERROR_MESSAGE
+        }else{
+            addHistory(exp,result)
+            input.value= result
         }
-        catch{
-            console.error(exp)
-            input.value= 'Error en la operacion'    
-        }
+    }
+    catch{
+        console.error(exp)
+        input.value= ERROR_MESSAGE    
+            
     }
 }
 function deleteLastElement(){
