@@ -102,7 +102,6 @@ function validityKeys(e){
     }else{
         let validKeys = keys.toSpliced(0,1)
         if (validKeys.includes(e.key)){
-            console.log(e.key)
             input.value += e.key
         }
     }
@@ -116,6 +115,7 @@ function resolve(){
         try {
             let result = eval(exp)
             if (result==undefined){
+                console.error(result)
                 input.value= 'Error en la operacion'
             }else{
                 addHistory(exp,result)
@@ -123,10 +123,25 @@ function resolve(){
             }
         }
         catch{
+            console.error(result)
             input.value= 'Error en la operacion'
         }
     }else{
-        input.value= 'Error en la operacion'    
+        let expSin0 = exp.slice(1)
+        try{
+            let result = eval(expSin0)
+            if (result==undefined){
+                console.error(result)
+                input.value= 'Error en la operacion'
+            }else{
+                addHistory(expSin0,result)
+                input.value= result
+            }
+        }
+        catch{
+            console.error(exp)
+            input.value= 'Error en la operacion'    
+        }
     }
 }
 function deleteLastElement(){

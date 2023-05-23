@@ -140,7 +140,7 @@
 }
 .app .container-general .container-calculadora .calculadora .screen .input-screen {
   grid-column: 1/4;
-  padding-left: 1rem;
+  padding: 0 1rem;
   font-size: 1rem;
   line-height: 2;
   border: none;
