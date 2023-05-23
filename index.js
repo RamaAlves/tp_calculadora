@@ -22,7 +22,7 @@ containerScreen.classList.add("screen")
 const input = document.createElement('input')
 //input.setAttribute('id', 'screen')
 input.classList.add("input-screen")
-input.readOnly=true
+input.addEventListener('keypress', validityKeys)
 containerScreen.appendChild(input)
 
 const del = document.createElement('button')
@@ -57,9 +57,9 @@ calculadora.appendChild(containerScreen)
 calculadora.appendChild(containerKeyboard)
 containerCalculadora.insertBefore(calculadora, history)
 
-function addKeys(){
-    
-    let keys = ['AC','(',')','/','7','8','9','*','4','5','6','-','1','2','3','+','0','.','=']
+const keys = ['AC','(',')','/','7','8','9','*','4','5','6','-','1','2','3','+','0','.','=']
+
+function addKeys(){    
     
     let fragment = document.createDocumentFragment()
     keys.forEach((key) =>{
@@ -92,6 +92,20 @@ addKeys()
 
 function addValue(e){
     input.value += e.target.textContent
+}
+function validityKeys(e){
+    e.preventDefault();
+    if(e.key == 'Enter'){
+        resolve()
+    }else if(e.key== 'Backspace'){
+        deleteLastElement()
+    }else{
+        let validKeys = keys.toSpliced(0,1)
+        if (validKeys.includes(e.key)){
+            console.log(e.key)
+            input.value += e.key
+        }
+    }
 }
 function reset(){
     input.value = ''
