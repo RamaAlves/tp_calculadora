@@ -120,8 +120,16 @@ function reset(){
 function resolve(){
     let exp = input.value
     if (exp[0]!='0'||(exp[0]+exp[1])=='0.'){
-        tryResolve(exp)
+        if(exp[0]+exp[1]=='-0'){
+            let arrayExp = exp.split('')
+            arrayExp.splice(1,1)
+            let strExp = arrayExp.join('')
+            tryResolve(strExp)
+        }else{
+            tryResolve(exp)
+        }
     }else{
+        console.warn(exp)
         let expSin0 = exp.slice(1)
         tryResolve(expSin0)
     }
